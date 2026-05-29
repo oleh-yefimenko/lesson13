@@ -1,0 +1,26 @@
+{
+	"name": "homework08",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "npx playwright test",
+		"test:ui": "npx playwright test --ui",
+		"codegen": "npx playwright codegen",
+		"allure": "npx allure serve allure-results",
+		"allure:delRes": "rm -rf allure-results",
+		"allure:html": "npx allure generate allure-results --single-file --clean",
+		"allure:open": "npx allure open allure-report",
+		"allure:clean": "rm -rf allure-results allure-report"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "commonjs",
+	"devDependencies": {
+		"@faker-js/faker": "^10.4.0",
+		"@playwright/test": "^1.59.1",
+		"@types/node": "^25.6.0",
+		"allure-playwright": "^3.8.0"
+	}
+}
