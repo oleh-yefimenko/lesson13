@@ -21,3 +21,22 @@ jobs:
         run: npx playwright install --with-deps
       - name: Запуст тестов
         run: npx playwright test
+      - name: Генерация Allure отчета
+        run: npx allure awesome ./allure-results --single-file
+        # Если генерация отчета упадет, Workflow продолжит выполнение.
+        continue-on-error: true
+        # Выполнять этот шаг всегда
+        if: always()
+# Загрузить файл(ы) как артефакт GitHub Actions,Это файлы, которые GitHub сохранит после завершения workflow.
+#allure-report, playwright-report, screenshots, videos, logs...
+      - name: Upload test artifacts
+        uses: actions/upload-artifact@v7.0.1
+        # Если генерация отчета упадет, Workflow продолжит выполнение.
+        continue-on-error: true
+        # Выполнять этот шаг всегда
+        if: always()
+        with:
+          name: test-artifacts
+          path: |
+            allure-report
+            playwright-report
